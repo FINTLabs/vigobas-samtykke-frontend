@@ -1,0 +1,38 @@
+@import '../../../content/scss/Variables.scss';
+@import '../../../content/scss/BaseStyles.scss';
+
+.footer-bottom__seperator {
+    width: 100%;
+    border: none;
+    height: 1.5px;
+    margin: 0;
+    background-color: $secondary-color;
+    align-content: center;
+  }
+
+  .footer {
+    //border-top: $border-medium $secondary-color;
+    clear: both;
+    font: $fweight-normal $fsize-sm $font;
+    margin: 50px auto 0;
+    padding: 0 0 50px;
+    text-align: left;
+    transform: translateY(5vh);
+
+    strong {
+        font-weight: $fweight-bold;
+    }
+
+    .footer-info {
+        padding: 15px 0 0;
+    }
+/*
+    .vigo {
+        text-align: right;
+
+        img {
+            width: 200px;
+        }
+    }
+*/
+}

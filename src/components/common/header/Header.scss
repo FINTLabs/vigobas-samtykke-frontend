@@ -1,0 +1,76 @@
+@import '../../../content/scss/Variables.scss';
+@import '../../../content/scss/BaseStyles.scss';
+
+
+.header {
+     //border-bottom: $border-thick $secondary-color;
+     height: 100px;
+     margin: 20px auto;
+     padding: 0;
+     position: relative;
+     width: 100%;
+     display: inline-block;
+     
+}
+.row {
+    margin-left: 6%;
+    margin-right: 6%;
+
+}
+.logo{
+    display: table-cell;
+    display: inline-block;
+    height: 100px;
+    width: 50%;
+
+    @media #{max-sm} {
+        //TODO center logos        
+    }
+    
+    &.logo-county {
+        background-image: url('../../../content/images/company-logo.png');
+        background-position: 30px left;
+        background-repeat: no-repeat;
+        float: left;
+        width: 300px;
+        height: 100px;
+        
+    }
+
+     &.logo-portal {
+        background-image: url('../../../content/images/portal-logo.png');
+        background-position: 30px center;
+        background-repeat: no-repeat;
+        float: right;
+        width: 328px;
+        height: 100px;
+        align-content: right;
+
+        .logo-text {
+            background-color: $main-logo-background;
+            color: $main-logo-foreground;
+            font-weight: 700;
+            margin: 45px 0 0;
+            padding: 6px 0px;
+            text-align: center;
+            text-transform: uppercase;
+            width: 328px;
+        }
+    }
+}
+
+.header-top__seperator {
+    width: 100%;
+    border: none;
+    height: 3.5px;
+    margin: 0;
+    background-color: $secondary-color;
+    align-content: center;
+  }
+
+  
+
+
+
+
+

@@ -1,0 +1,43 @@
+@import '../../../content/scss/Variables.scss';
+@import '../../../content/scss/BaseStyles.scss';
+
+.consent-navigation {
+    display: inline-block;
+    float: left;
+    width: 15%;
+
+    @media #{$max-lg} {
+        width: 20%;
+    }
+
+    a {
+        background: $feature-color2;
+        border: none !important;
+        color: $secondary-color;
+        display: block;
+        font: $fweight-normal $fsize-std $font;
+        margin: 0 0 6px;
+        padding: 10px;
+        text-decoration: $none;
+
+        &:hover {
+            @extend .selected;
+        }
+
+        &.selected {
+            background: $primary-color;
+            color: $white !important;
+            font: $fweight-normal $fsize-std $font;
+            margin: 0 0 6px;
+            padding: 10px;
+
+            @media #{$max-lg} {
+                font: $fweight-normal $fsize-sm $font;
+            }
+        }
+
+        @media #{$max-lg} {
+            font: $fweight-normal $fsize-sm $font;
+        }
+    }
+}
