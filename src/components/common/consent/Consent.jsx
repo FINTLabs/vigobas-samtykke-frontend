@@ -17,16 +17,19 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import './Consent.scss';
 
 const useStyles = makeStyles((theme) => ({
+    headerColor: {
+        color: theme.primaryColor,
+    },
     table: {
         minWidth: 350,
     },
+    
     root: {
         '& > *': {
-            margin: theme.spacing(1),
+            // margin: theme.spacing(1),
         },
     },
 }));
-
 const GreenRadio = withStyles({
     root: {
         color: green[400],
@@ -46,6 +49,8 @@ const dateformatter = (datetime) => {
 }
 
 const Consent = ({ consents, user }) => {
+    // const theme = useTheme();
+    
     const [date, setDate] = React.useState([]);
     const [yDate, setYDate] = React.useState([]);
     const [nDate, setNDate] = React.useState([]);
@@ -142,7 +147,7 @@ const Consent = ({ consents, user }) => {
         <section className="consent">
             <section className="row">
                 <section className="row-1">
-                    <h1>Velkommen, {user.name}!</h1>
+                    <h1 className={classes.headerColor}>Velkommen, {user.name}!</h1>
                     <p>Denne siden gir deg oversikt over dine samtykker hos {appSettings.CountyName}. </p>
                 </section>
                 <section className="row-3">

@@ -2,21 +2,21 @@ import React from 'react';
 import './App.scss';
 import { Header, Navbar, Consent, Footer } from './components/common';
 import { appSettings } from './Config';
+import { ThemeProvider } from "@material-ui/styles";
+import { createMuiTheme } from "@material-ui/core/styles";
+
+const defaultTheme = createMuiTheme();
+
 
 function App() {
-
+  const theme = {
+    ...defaultTheme,
+    primaryColor: "#7a1668",
+  };
+  const [tema, setTema] = React.useState(theme);
   const [consents, setConsents] = React.useState([]);
-  const [logo, setLogo] = React.useState('company-logo.png')
-  const [branding, setBranding] = React.useState({
-    logoCounty: '',
-    primaryColor: '',
-    primaryColorLight: '',
-    secondaryColor: '',
-    featureColor1: '',
-    featureColor2: ''
-  });
+  //const [logo, setLogo] = React.useState('company-logo.png')
   var user = { name:"John Doe" }
-
   React.useEffect(() => {
     fetch(`${appSettings.ApiUri}branding`, {
       'method': 'GET',
@@ -26,11 +26,9 @@ function App() {
     })
     .then(res => res.json())
     .then((data) => {
-      setLogo(data.logo);
-      setBranding({
-      ...branding, data
-      });
-      console.log(data);
+      //setLogo(data.logo);
+      setTema({...tema, primaryColor: data.primaryColor})
+      console.log(theme.primaryColor);
     }).catch(console.log);
 
     fetch(`${appSettings.ApiUri}consents`, {
@@ -50,6 +48,7 @@ function App() {
 
 
   return (
+    <ThemeProvider theme={tema}>
     <div className="App">
       <Header />
       <div className="main">
@@ -60,6 +59,7 @@ function App() {
       </div>
       <Footer />
     </div>
+    </ThemeProvider>
   );
 }
 
