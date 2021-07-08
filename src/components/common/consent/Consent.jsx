@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 350,
   },
-
   root: {
     "& > *": {
       // margin: theme.spacing(1),
@@ -39,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: `2px solid rgba(${theme.featureColor1}, 1) !important`,
   },
 }));
+
 const GreenRadio = withStyles({
   root: {
     color: green[400],
