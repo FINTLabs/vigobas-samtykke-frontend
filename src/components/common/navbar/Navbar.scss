@@ -11,9 +11,7 @@
     }
 
     a {
-        background: $feature-color2;
         border: none !important;
-        color: $secondary-color;
         display: block;
         font: $fweight-normal $fsize-std $font;
         margin: 0 0 6px;
@@ -25,7 +23,7 @@
         }
 
         &.selected {
-            background: $primary-color;
+            //background: $primary-color;
             color: $white !important;
             font: $fweight-normal $fsize-std $font;
             margin: 0 0 6px;

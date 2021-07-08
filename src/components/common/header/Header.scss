@@ -28,13 +28,12 @@
     }
     
     &.logo-county {
-        background-image: url('../../../content/images/company-logo.png');
+        background-image: url('../../../content/images/01-viken.png');
         background-position: 30px left;
         background-repeat: no-repeat;
         float: left;
-        width: 300px;
+        width: 336px;
         height: 100px;
-        
     }
 
      &.logo-portal {
@@ -45,17 +44,6 @@
         width: 328px;
         height: 100px;
         align-content: right;
-
-        .logo-text {
-            background-color: $main-logo-background;
-            color: $main-logo-foreground;
-            font-weight: 700;
-            margin: 45px 0 0;
-            padding: 6px 0px;
-            text-align: center;
-            text-transform: uppercase;
-            width: 328px;
-        }
     }
 }
 
