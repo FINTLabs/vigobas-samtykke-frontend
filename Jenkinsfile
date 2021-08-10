@@ -7,7 +7,8 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                withDockerRegistry([credentialsId: "${MAIN_ACR}", url: "https://${MAIN_ACR}"]) {
+                //withDockerRegistry([credentialsId: "${MAIN_ACR}", url: "https://${MAIN_ACR}"]) {
+                withDockerRegistry([credentialsId: 'fintlabsacr.azurecr.io', url: 'https://fintlabsacr.azurecr.io']) {
                     sh "docker build --tag ${GIT_COMMIT} ."
                 }
             }
@@ -20,7 +21,8 @@ pipeline {
                 // Tagging the specific version
                 // sh "docker tag ${GIT_COMMIT} ${MAIN_ACR}/${IMAGE_NAME}:build.${BUILD_NUMBER}"
                 sh "docker tag ${GIT_COMMIT} ${MAIN_ACR}/${IMAGE_NAME}:build.${BUILD_NUMBER}_${GIT_COMMIT}"
-                withDockerRegistry([credentialsId: "${MAIN_ACR}", url: "https://${MAIN_ACR}"]) {
+                //withDockerRegistry([credentialsId: "${MAIN_ACR}", url: "https://${MAIN_ACR}"]) {
+                withDockerRegistry([credentialsId: 'fintlabsacr.azurecr.io', url: 'https://fintlabsacr.azurecr.io']) {
                   sh "docker push ${MAIN_ACR}/${IMAGE_NAME}:build.${BUILD_NUMBER}_${GIT_COMMIT}"
                   sh "docker tag ${GIT_COMMIT} ${MAIN_ACR}/${IMAGE_NAME}:latest"
                   sh "docker push ${MAIN_ACR}/${IMAGE_NAME}:latest"

@@ -84,14 +84,14 @@ h4 {
 /*LINKS*/
 
 a {
-    border-bottom: $border-thin $link-color !important;
-    color: $link-color;
+    //border-bottom: $border-thin $link-color !important;
+    //color: $link-color;
     text-decoration: none !important;
 }
 
 a:hover {
-    border-bottom: $border-thin $link-color-hover !important;
-    color: $link-color-hover !important;
+    //border-bottom: $border-thin $link-color-hover !important;
+    //color: $link-color-hover !important;
     text-decoration: none !important;
 }
 
@@ -289,10 +289,6 @@ select {
 
 table {
     width: 100%;
-
-    tr {
-        border-bottom: $border-thin rgba($feature-color2, 01);
-    }
 
     th {
         border: $border-thin transparent;
