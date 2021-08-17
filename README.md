@@ -1,3 +1,9 @@
+
+## Branding setup using makeStyles
+
+In app.jsx along with retrieving the consents, it also retrieves the branding config from the frontend. It sets the config values inside a theme object. This object is then available in other components via importing and using makeStyles. There you define a styling to a classname where you use this where you want to override the styling. More detailed explained on material-ui [site](https://material-ui.com/styles/basics/).
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -66,5 +72,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
 ### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+*************************************************************************************************************************
