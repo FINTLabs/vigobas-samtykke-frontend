@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.scss";
-import { Header, Navbar, Consent, Footer } from "./components/common";
-import { appSettings } from "./Config";
+import { Header, Consent, Footer } from "./components/common";
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
 
@@ -10,7 +9,7 @@ const defaultTheme = createMuiTheme();
 function App() {
   const theme = {
     ...defaultTheme,
-    logo: "url('../../../content/images/company-logo.png')",
+    logo: "url('./content/images/company-logo.png')",
     primaryColor: "#7a1668",
     secondaryColor: "#513f35",
     featureColor1: "#0b8797",
@@ -26,7 +25,7 @@ function App() {
   const [consents, setConsents] = React.useState([]);
   var user = { name: "John Doe" };
   React.useEffect(() => {
-    fetch(`${appSettings.ApiUri}branding`, {
+    fetch(`api/branding`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -53,11 +52,11 @@ function App() {
             mail: data.mail,
           };
         });
-        console.log(tema);
+        console.log(tema, window.location.href);
       })
       .catch(console.log);
 
-    fetch(`${appSettings.ApiUri}consents`, {
+    fetch(`api/consents`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -75,7 +74,6 @@ function App() {
         <Header />
         <div className="main">
           <div className="row">
-            <Navbar />
             <Consent consents={consents} user={user} />
           </div>
         </div>
