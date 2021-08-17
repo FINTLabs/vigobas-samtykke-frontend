@@ -52,7 +52,7 @@ function App() {
             mail: data.mail,
           };
         });
-        console.log(tema, window.location.href);
+        // console.log(tema);
       })
       .catch(console.log);
 
