@@ -15,15 +15,18 @@ function App() {
     featureColor1: "#0b8797",
     featureColor2: "#d0eaed",
   };
-  const information = {
+
+  const defaultInformation = {
     mail: "brukerstotte@vigo.no",
     phoneNumber: "+47 99 05 55 99",
   };
+
   const [tema, setTema] = React.useState(theme);
-  const [info, setInfo] = React.useState(information);
-  console.log(info); // TODO use these
+  const [footerInfo, setFooterInfo] = React.useState(defaultInformation);
   const [consents, setConsents] = React.useState([]);
+
   var user = { name: "John Doe" };
+
   React.useEffect(() => {
     fetch(`api/branding`, {
       method: "GET",
@@ -41,18 +44,15 @@ function App() {
             secondaryColor: data.secondaryColor,
             featureColor1: data.featureColor1,
             featureColor2: data.featureColor2,
-            phoneNumber: data.phoneNumber,
-            mail: data.mail,
           };
         });
-        setInfo((info) => {
+        setFooterInfo((info) => {
           return {
             ...info,
             phoneNumber: data.phoneNumber,
             mail: data.mail,
           };
         });
-        // console.log(tema);
       })
       .catch(console.log);
 
@@ -68,6 +68,7 @@ function App() {
       })
       .catch(console.log);
   }, []);
+
   return (
     <ThemeProvider theme={tema}>
       <div className="App">
@@ -77,7 +78,7 @@ function App() {
             <Consent consents={consents} user={user} />
           </div>
         </div>
-        <Footer />
+        <Footer footerInfo={footerInfo} />
       </div>
     </ThemeProvider>
   );

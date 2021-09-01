@@ -32,6 +32,13 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "uppercase",
     width: "328px",
   },
+  headerRow: {
+    height: "100%",
+    paddingBottom: "2px",
+    borderBottom: `solid ${theme.secondaryColor} 3.5px`,
+    marginLeft: "6%",
+    marginRight: "6%",
+  },
 }));
 
 function Header() {
@@ -39,12 +46,11 @@ function Header() {
 
   return (
     <header className="header">
-      <section className="row">
+      <section className={classes.headerRow}>
         <section className={classes.logoCounty} />
         <section className="logo logo-portal">
           <section className={classes.logoText}>Samtykke</section>
         </section>
-        <hr className={classes.top_seperator} />
       </section>
     </header>
   );

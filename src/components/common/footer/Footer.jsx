@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import { appSettings } from "../../../Config";
 import "./Footer.scss";
+
 const useStyles = makeStyles((theme) => ({
   bottom_seperator: {
     backgroundColor: theme.secondaryColor,
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.secondaryColor,
   },
 }));
-const Footer = () => {
+const Footer = ({ footerInfo }) => {
   const classes = useStyles();
   return (
     <footer className="footer">
@@ -41,9 +42,9 @@ const Footer = () => {
               href="mailto:@appSettings.RequestSenderEmail"
               className={classes.aHover}
             >
-              {appSettings.RequestSenderEmail}
+              {footerInfo.mail}
             </a>{" "}
-            | tlf. {appSettings.RequestSenderTel}
+            | tlf. {footerInfo.phoneNumber}
           </p>
         </section>
       </section>
