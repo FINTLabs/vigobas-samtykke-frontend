@@ -34,7 +34,7 @@ const Footer = ({ footerInfo }) => {
         <section className="footer-info">
           <p>
             <strong className={classes.strongText}>
-              {appSettings.OrgName}
+              {footerInfo.countyName}
             </strong>
           </p>
           <p>

@@ -19,6 +19,7 @@ function App() {
   const defaultInformation = {
     mail: "brukerstotte@vigo.no",
     phoneNumber: "+47 99 05 55 99",
+    countyName: "Vigo IKS"
   };
 
   const [tema, setTema] = React.useState(theme);
@@ -51,6 +52,7 @@ function App() {
             ...info,
             phoneNumber: data.phoneNumber,
             mail: data.mail,
+            countyName: data.countyName          
           };
         });
       })
