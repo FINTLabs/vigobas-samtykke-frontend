@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { appSettings } from "../../../Config";
+//import { appSettings } from "../../../Config";
 import "./Footer.scss";
 
 const useStyles = makeStyles((theme) => ({

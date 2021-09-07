@@ -26,8 +26,6 @@ function App() {
   const [footerInfo, setFooterInfo] = React.useState(defaultInformation);
   const [consents, setConsents] = React.useState([]);
 
-  var user = { name: "John Doe" };
-
   React.useEffect(() => {
     fetch(`api/branding`, {
       method: "GET",
@@ -77,7 +75,7 @@ function App() {
         <Header />
         <div className="main">
           <div className="row">
-            <Consent consents={consents} user={user} />
+            <Consent consents={consents} footerInfo={footerInfo}/>
           </div>
         </div>
         <Footer footerInfo={footerInfo} />
