@@ -63,6 +63,7 @@ const Consent = ({ consents, user }) => {
   const [date, setDate] = React.useState([]);
   const [yDate, setYDate] = React.useState([]);
   const [nDate, setNDate] = React.useState([]);
+
   const filteredConsents = consents.map((consent) => {
     return consent.active.toString();
   });

@@ -1,7 +1,6 @@
 @import '../../../content/scss/Variables.scss';
 @import '../../../content/scss/BaseStyles.scss';
 
-
 .header {
      //border-bottom: $border-thick $secondary-color;
      height: 100px;
@@ -17,6 +16,14 @@
     margin-right: 6%;
 
 }
+.header {
+    &.row {
+        height: 100%;
+        padding-bottom: 2px;
+        border-bottom: solid $secondary-color 2px;
+    }
+}
+
 .logo{
     display: table-cell;
     display: inline-block;
