@@ -57,7 +57,7 @@ const dateformatter = (datetime) => {
   return "Ingen gyldig dato";
 };
 
-const Consent = ({ consents, user }) => {
+const Consent = ({ consents, footerInfo }) => {
   // const theme = useTheme();
 
   const [date, setDate] = React.useState([]);
@@ -163,14 +163,15 @@ const Consent = ({ consents, user }) => {
   };
 
   const classes = useStyles();
+  
   return (
     <section className="consent">
       <section className="row">
         <section className="row-1">
-          <h1 className={classes.headerColor}>Velkommen, {user.name}!</h1>
+          <h1 className={classes.headerColor}>Velkommen!</h1>
           <p>
             Denne siden gir deg oversikt over dine samtykker hos{" "}
-            {appSettings.CountyName}.{" "}
+            {footerInfo.countyName}.{" "}
           </p>
         </section>
         <section className="row-3">

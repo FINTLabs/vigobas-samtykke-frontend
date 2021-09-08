@@ -19,13 +19,12 @@ function App() {
   const defaultInformation = {
     mail: "brukerstotte@vigo.no",
     phoneNumber: "+47 99 05 55 99",
+    countyName: "Vigo IKS"
   };
 
   const [tema, setTema] = React.useState(theme);
   const [footerInfo, setFooterInfo] = React.useState(defaultInformation);
   const [consents, setConsents] = React.useState([]);
-
-  var user = { name: "John Doe" };
 
   React.useEffect(() => {
     fetch(`api/branding`, {
@@ -51,6 +50,7 @@ function App() {
             ...info,
             phoneNumber: data.phoneNumber,
             mail: data.mail,
+            countyName: data.countyName          
           };
         });
       })
@@ -75,7 +75,7 @@ function App() {
         <Header />
         <div className="main">
           <div className="row">
-            <Consent consents={consents} user={user} />
+            <Consent consents={consents} footerInfo={footerInfo}/>
           </div>
         </div>
         <Footer footerInfo={footerInfo} />
