@@ -11,9 +11,10 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import { appSettings } from "../../../Config";
 import { green } from "@material-ui/core/colors";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
+
+import { appSettings } from "../../../Config";
 import "./Consent.scss";
 
 const useStyles = makeStyles((theme) => ({
@@ -163,7 +164,7 @@ const Consent = ({ consents, footerInfo }) => {
   };
 
   const classes = useStyles();
-  
+
   return (
     <section className="consent">
       <section className="row">

@@ -10,6 +10,7 @@ function App() {
   const theme = {
     ...defaultTheme,
     logo: "url('./content/images/company-logo.png')",
+    isLogoFromUrl: false,
     primaryColor: "#7a1668",
     secondaryColor: "#513f35",
     featureColor1: "#0b8797",
@@ -19,7 +20,7 @@ function App() {
   const defaultInformation = {
     mail: "brukerstotte@vigo.no",
     phoneNumber: "+47 99 05 55 99",
-    countyName: "Vigo IKS"
+    countyName: "Vigo IKS",
   };
 
   const [tema, setTema] = React.useState(theme);
@@ -39,6 +40,7 @@ function App() {
           return {
             ...tema,
             logo: data.logo,
+            isLogoFromUrl: data.isLogoFromUrl,
             primaryColor: data.primaryColor,
             secondaryColor: data.secondaryColor,
             featureColor1: data.featureColor1,
@@ -50,7 +52,7 @@ function App() {
             ...info,
             phoneNumber: data.phoneNumber,
             mail: data.mail,
-            countyName: data.countyName          
+            countyName: data.countyName,
           };
         });
       })
@@ -75,7 +77,7 @@ function App() {
         <Header />
         <div className="main">
           <div className="row">
-            <Consent consents={consents} footerInfo={footerInfo}/>
+            <Consent consents={consents} footerInfo={footerInfo} />
           </div>
         </div>
         <Footer footerInfo={footerInfo} />
