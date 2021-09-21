@@ -7,7 +7,7 @@ import image1 from "../../../content/images/01-viken.png";
 const useStyles = makeStyles((theme) => ({
   logoCounty: {
     backgroundImage:
-      theme.logo.substring(0, 3) === "http"
+      theme.logo.substring(0, 4) === "http"
         ? `url(${theme.logo})`
         : `url('${theme.logo === "01-viken.png" ? image1 : ""}')`,
     backgroundSize: "contain",

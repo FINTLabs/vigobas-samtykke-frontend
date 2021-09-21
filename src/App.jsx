@@ -69,7 +69,6 @@ function App() {
       })
       .catch(console.log);
   }, []);
-
   return (
     <ThemeProvider theme={tema}>
       <div className="App">
