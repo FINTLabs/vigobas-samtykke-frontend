@@ -9,8 +9,7 @@ const defaultTheme = createMuiTheme();
 function App() {
   const theme = {
     ...defaultTheme,
-    logo: "url('./content/images/company-logo.png')",
-    isLogoFromUrl: false,
+    logo: "",
     primaryColor: "#7a1668",
     secondaryColor: "#513f35",
     featureColor1: "#0b8797",
@@ -70,7 +69,6 @@ function App() {
       })
       .catch(console.log);
   }, []);
-
   return (
     <ThemeProvider theme={tema}>
       <div className="App">
