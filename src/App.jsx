@@ -52,7 +52,7 @@ function App() {
       })
       .catch((error) => {
         setErrorText(
-          "Det har skjedd noe galt med innloggingen, prøv å logg inn på nytt."
+          "Det har skjedd noe galt med innloggingen, prøv å logge inn på nytt."
         );
         console.error("Error:", error);
       });
