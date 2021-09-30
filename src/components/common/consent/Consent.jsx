@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
   errorHandler: {
     color: "#ff3333",
+    marginBottom: "20px",
   },
 }));
 

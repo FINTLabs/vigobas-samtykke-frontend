@@ -23,6 +23,7 @@ function App() {
   const [errorText, setErrorText] = React.useState("");
 
   const getBranding = React.useCallback(() => {
+    setErrorText("");
     fetch(`api/branding`, {
       method: "GET",
       headers: {
@@ -31,6 +32,12 @@ function App() {
     })
       .then((res) => res.json())
       .then((data) => {
+        if (data.errorId) {
+          const error = new Error("promise chain cancelled");
+          error.message = `Det har skjedd en feil, prøv å logge inn på nytt.\n\n
+          Ved gjentatte feilmeldinger, ta kontakt med din it-support og oppgi dette id-nummeret: ${data.errorId}`;
+          throw error;
+        }
         setTema((tema) => {
           return {
             ...tema,
@@ -51,9 +58,7 @@ function App() {
         });
       })
       .catch((error) => {
-        setErrorText(
-          "Det har skjedd noe galt med innloggingen, prøv å logge inn på nytt."
-        );
+        setErrorText(error.message);
         console.error("Error:", error);
       });
   }, []);
@@ -66,14 +71,23 @@ function App() {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
+      .then((response) => {
+        return response.json();
+      })
       .then((data) => {
+        if (data.errorId) {
+          const error = new Error("promise chain cancelled");
+          error.message = `
+                Det har skjedd noe galt med innhenting av samtykkelisten din,
+                prøv å logge inn på nytt.\n\n
+                Ved gjentatte feilmeldinger, ta kontakt med din it-support og
+                oppgi dette id-nummeret: ${data.errorId}`;
+          throw error;
+        }
         setConsents(data);
       })
       .catch((error) => {
-        setErrorText(
-          "Det har skjedd noe galt med innhenting av samtykkelisten din, prøv igjen senere!"
-        );
+        setErrorText(error.message);
         console.error("Error:", error);
       });
   }, []);
