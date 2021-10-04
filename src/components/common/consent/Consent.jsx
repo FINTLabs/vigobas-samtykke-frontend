@@ -38,6 +38,10 @@ const useStyles = makeStyles((theme) => ({
   tableHeader: {
     borderBottom: `2px solid rgba(${theme.featureColor1}, 1) !important`,
   },
+  errorHandler: {
+    color: "#ff3333",
+    marginBottom: "20px",
+  },
 }));
 
 const GreenRadio = withStyles({
@@ -58,7 +62,7 @@ const dateformatter = (datetime) => {
   return "Ingen gyldig dato";
 };
 
-const Consent = ({ consents, footerInfo }) => {
+const Consent = ({ consents, footerInfo, errorText }) => {
   // const theme = useTheme();
 
   const [date, setDate] = React.useState([]);
@@ -169,6 +173,9 @@ const Consent = ({ consents, footerInfo }) => {
     <section className="consent">
       <section className="row">
         <section className="row-1">
+          {errorText !== "" && (
+            <p className={classes.errorHandler}>{errorText}</p>
+          )}
           <h1 className={classes.headerColor}>Velkommen!</h1>
           <p>
             Denne siden gir deg oversikt over dine samtykker hos{" "}

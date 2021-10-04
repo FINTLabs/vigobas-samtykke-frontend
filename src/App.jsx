@@ -1,8 +1,9 @@
 import React from "react";
-import "./App.scss";
-import { Header, Consent, Footer } from "./components/common";
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
+
+import { Header, Consent, Footer } from "./components/common";
+import "./App.scss";
 
 const defaultTheme = createMuiTheme();
 
@@ -15,18 +16,14 @@ function App() {
     featureColor1: "#0b8797",
     featureColor2: "#d0eaed",
   };
-
-  const defaultInformation = {
-    mail: "brukerstotte@vigo.no",
-    phoneNumber: "+47 99 05 55 99",
-    countyName: "Vigo IKS",
-  };
-
+  const footerDefault = { countyName: "", phoneNumber: "", mail: "" };
   const [tema, setTema] = React.useState(theme);
-  const [footerInfo, setFooterInfo] = React.useState(defaultInformation);
+  const [footerInfo, setFooterInfo] = React.useState(footerDefault);
   const [consents, setConsents] = React.useState([]);
+  const [errorText, setErrorText] = React.useState("");
 
-  React.useEffect(() => {
+  const getBranding = React.useCallback(() => {
+    setErrorText("");
     fetch(`api/branding`, {
       method: "GET",
       headers: {
@@ -35,11 +32,16 @@ function App() {
     })
       .then((res) => res.json())
       .then((data) => {
+        if (data.errorId) {
+          const error = new Error("promise chain cancelled");
+          error.message = `Det har skjedd en feil, prøv å logge inn på nytt.\n\n
+          Ved gjentatte feilmeldinger, ta kontakt med din it-support og oppgi dette id-nummeret: ${data.errorId}`;
+          throw error;
+        }
         setTema((tema) => {
           return {
             ...tema,
             logo: data.logo,
-            isLogoFromUrl: data.isLogoFromUrl,
             primaryColor: data.primaryColor,
             secondaryColor: data.secondaryColor,
             featureColor1: data.featureColor1,
@@ -55,27 +57,57 @@ function App() {
           };
         });
       })
-      .catch(console.log);
+      .catch((error) => {
+        setErrorText(error.message);
+        console.error("Error:", error);
+      });
+  }, []);
 
+  const getConsents = React.useCallback(() => {
+    setErrorText("");
     fetch(`api/consents`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
+      .then((response) => {
+        return response.json();
+      })
       .then((data) => {
+        if (data.errorId) {
+          const error = new Error("promise chain cancelled");
+          error.message = `
+                Det har skjedd noe galt med innhenting av samtykkelisten din,
+                prøv å logge inn på nytt.\n\n
+                Ved gjentatte feilmeldinger, ta kontakt med din it-support og
+                oppgi dette id-nummeret: ${data.errorId}`;
+          throw error;
+        }
         setConsents(data);
       })
-      .catch(console.log);
+      .catch((error) => {
+        setErrorText(error.message);
+        console.error("Error:", error);
+      });
   }, []);
+
+  React.useEffect(() => {
+    getBranding();
+    getConsents();
+  }, [getBranding, getConsents]);
+
   return (
     <ThemeProvider theme={tema}>
       <div className="App">
         <Header />
         <div className="main">
           <div className="row">
-            <Consent consents={consents} footerInfo={footerInfo} />
+            <Consent
+              consents={consents}
+              footerInfo={footerInfo}
+              errorText={errorText}
+            />
           </div>
         </div>
         <Footer footerInfo={footerInfo} />
