@@ -16,6 +16,7 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 import { appSettings } from "../../../Config";
 import "./Consent.scss";
+import { dateformatter } from "../../_utilities/date";
 
 const useStyles = makeStyles((theme) => ({
   headerColor: {
@@ -54,17 +55,7 @@ const GreenRadio = withStyles({
   checked: {},
 })((props) => <Radio color="default" {...props} />);
 
-const dateformatter = (datetime) => {
-  if (datetime != null) {
-    var date = new Date(datetime.toString());
-    return date.toLocaleString("no-NO");
-  }
-  return "Ingen gyldig dato";
-};
-
 const Consent = ({ consents, footerInfo, errorText }) => {
-  // const theme = useTheme();
-
   const [date, setDate] = React.useState([]);
   const [yDate, setYDate] = React.useState([]);
   const [nDate, setNDate] = React.useState([]);
@@ -127,7 +118,7 @@ const Consent = ({ consents, footerInfo, errorText }) => {
     console.log("Updating this object", updatedConsent);
 
     fetch(
-      `${appSettings.ApiUri}${updatedConsent.systemIdValue}/${updatedConsent.processing.systemId.identifikatorverdi}/${updatedConsent.active}`,
+      `api/${updatedConsent.systemIdValue}/${updatedConsent.processing.systemId.identifikatorverdi}/${updatedConsent.active}`,
       {
         method: "PUT",
         headers: {
@@ -146,22 +137,19 @@ const Consent = ({ consents, footerInfo, errorText }) => {
     const updatedConsentsActive = selectedConsents;
     updatedConsentsActive[index] = true.toString();
     setSelectedConsents([...updatedConsentsActive]);
-
+    console.log("fe", consent);
     setDate((prevDate) => [
       ...prevDate,
       (prevDate[index] = dateformatter(new Date())),
     ]);
     setYDate((prevDate) => [...prevDate, (prevDate[index] = date[index])]);
 
-    fetch(
-      `${appSettings.ApiUri}/${consentCreating.processing.systemId.identifikatorverdi}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-      }
-    )
+    fetch(`api/${consentCreating.processing.systemId.identifikatorverdi}`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
       .then((response) => response.json())
       //.then(setDate(prevDate => [...prevDate, prevDate[index] = dateformatter(new Date())]))
       .catch(console.log);
