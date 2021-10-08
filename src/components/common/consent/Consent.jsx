@@ -16,6 +16,7 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 import { appSettings } from "../../../Config";
 import "./Consent.scss";
+import { dateformatter } from "../../_utilities/date";
 
 const useStyles = makeStyles((theme) => ({
   headerColor: {
@@ -54,17 +55,7 @@ const GreenRadio = withStyles({
   checked: {},
 })((props) => <Radio color="default" {...props} />);
 
-const dateformatter = (datetime) => {
-  if (datetime != null) {
-    var date = new Date(datetime.toString());
-    return date.toLocaleString("no-NO");
-  }
-  return "Ingen gyldig dato";
-};
-
 const Consent = ({ consents, footerInfo, errorText }) => {
-  // const theme = useTheme();
-
   const [date, setDate] = React.useState([]);
   const [yDate, setYDate] = React.useState([]);
   const [nDate, setNDate] = React.useState([]);
@@ -124,10 +115,10 @@ const Consent = ({ consents, footerInfo, errorText }) => {
 
     const updatedConsent = { ...consent };
     updatedConsent.active = updatedConsents[index];
-    console.log("Updating this object", updatedConsent);
+    // console.log("Updating this object", updatedConsent);
 
     fetch(
-      `${appSettings.ApiUri}${updatedConsent.systemIdValue}/${updatedConsent.processing.systemId.identifikatorverdi}/${updatedConsent.active}`,
+      `api/${updatedConsent.systemIdValue}/${updatedConsent.processing.systemId.identifikatorverdi}/${updatedConsent.active}`,
       {
         method: "PUT",
         headers: {
@@ -142,7 +133,7 @@ const Consent = ({ consents, footerInfo, errorText }) => {
 
   const createConsent = (event, index, consent) => {
     const consentCreating = { ...consent };
-    console.log("Creating consent with: ", consentCreating);
+    // console.log("Creating consent with: ", consentCreating);
     const updatedConsentsActive = selectedConsents;
     updatedConsentsActive[index] = true.toString();
     setSelectedConsents([...updatedConsentsActive]);
@@ -153,15 +144,12 @@ const Consent = ({ consents, footerInfo, errorText }) => {
     ]);
     setYDate((prevDate) => [...prevDate, (prevDate[index] = date[index])]);
 
-    fetch(
-      `${appSettings.ApiUri}/${consentCreating.processing.systemId.identifikatorverdi}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-      }
-    )
+    fetch(`api/${consentCreating.processing.systemId.identifikatorverdi}`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
       .then((response) => response.json())
       //.then(setDate(prevDate => [...prevDate, prevDate[index] = dateformatter(new Date())]))
       .catch(console.log);

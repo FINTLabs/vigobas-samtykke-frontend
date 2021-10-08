@@ -38,10 +38,7 @@ const Footer = ({ footerInfo }) => {
             </strong>
           </p>
           <p>
-            <a
-              href="mailto:@appSettings.RequestSenderEmail"
-              className={classes.aHover}
-            >
+            <a href={`mailto:${footerInfo.mail}`} className={classes.aHover}>
               {footerInfo.mail}
             </a>{" "}
             | tlf. {footerInfo.phoneNumber}
