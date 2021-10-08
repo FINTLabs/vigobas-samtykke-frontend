@@ -115,7 +115,7 @@ const Consent = ({ consents, footerInfo, errorText }) => {
 
     const updatedConsent = { ...consent };
     updatedConsent.active = updatedConsents[index];
-    console.log("Updating this object", updatedConsent);
+    // console.log("Updating this object", updatedConsent);
 
     fetch(
       `api/${updatedConsent.systemIdValue}/${updatedConsent.processing.systemId.identifikatorverdi}/${updatedConsent.active}`,
@@ -133,11 +133,11 @@ const Consent = ({ consents, footerInfo, errorText }) => {
 
   const createConsent = (event, index, consent) => {
     const consentCreating = { ...consent };
-    console.log("Creating consent with: ", consentCreating);
+    // console.log("Creating consent with: ", consentCreating);
     const updatedConsentsActive = selectedConsents;
     updatedConsentsActive[index] = true.toString();
     setSelectedConsents([...updatedConsentsActive]);
-    console.log("fe", consent);
+
     setDate((prevDate) => [
       ...prevDate,
       (prevDate[index] = dateformatter(new Date())),
