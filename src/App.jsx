@@ -94,8 +94,11 @@ function App() {
 
   React.useEffect(() => {
     getBranding();
+  }, [getBranding]);
+
+  React.useEffect(() => {
     getConsents();
-  }, [getBranding, getConsents]);
+  }, [setConsents, getConsents]);
 
   return (
     <ThemeProvider theme={tema}>
@@ -107,6 +110,7 @@ function App() {
               consents={consents}
               footerInfo={footerInfo}
               errorText={errorText}
+              setConsents={setConsents}
             />
           </div>
         </div>

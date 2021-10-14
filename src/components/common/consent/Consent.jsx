@@ -55,12 +55,14 @@ const GreenRadio = withStyles({
   checked: {},
 })((props) => <Radio color="default" {...props} />);
 
-const Consent = ({ consents, footerInfo, errorText }) => {
+const Consent = ({ consents, footerInfo, errorText, setConsents }) => {
   const [date, setDate] = React.useState([]);
   const [yDate, setYDate] = React.useState([]);
   const [nDate, setNDate] = React.useState([]);
+  const [isFetching, setIsFetching] = React.useState(false);
 
-  const filteredConsents = consents.map((consent) => {
+  const filteredConsents = consents.map((consent, i) => {
+    console.log(`${consent} plass ${i}`);
     return consent.active.toString();
   });
 
@@ -104,7 +106,6 @@ const Consent = ({ consents, footerInfo, errorText }) => {
     const updatedConsents = selectedConsents;
     updatedConsents[index] = event.target.value;
     setSelectedConsents([...updatedConsents]);
-
     if (event.target.value === "true") {
       yDate[index] = dateformatter(new Date());
     } else if (event.target.value === "false") {
@@ -116,8 +117,8 @@ const Consent = ({ consents, footerInfo, errorText }) => {
     const updatedConsent = { ...consent };
     updatedConsent.active = updatedConsents[index];
     // console.log("Updating this object", updatedConsent);
-
-    fetch(
+    setIsFetching(true);
+    const consentUpdated = fetch(
       `api/${updatedConsent.systemIdValue}/${updatedConsent.processing.systemId.identifikatorverdi}/${updatedConsent.active}`,
       {
         method: "PUT",
@@ -129,6 +130,8 @@ const Consent = ({ consents, footerInfo, errorText }) => {
       .then((response) => response.json())
       //.then(setDate(prevDate => [...prevDate, prevDate[index] = dateformatter(new Date())]))
       .catch(console.log);
+    setConsents((prevConsents) => [...prevConsents, consentUpdated]);
+    setIsFetching(false);
   };
 
   const createConsent = (event, index, consent) => {
@@ -144,15 +147,19 @@ const Consent = ({ consents, footerInfo, errorText }) => {
     ]);
     setYDate((prevDate) => [...prevDate, (prevDate[index] = date[index])]);
 
-    fetch(`api/${consentCreating.processing.systemId.identifikatorverdi}`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
+    const consentPost = fetch(
+      `api/${consentCreating.processing.systemId.identifikatorverdi}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+      }
+    )
       .then((response) => response.json())
       //.then(setDate(prevDate => [...prevDate, prevDate[index] = dateformatter(new Date())]))
       .catch(console.log);
+    setConsents((prevConsents) => [...prevConsents, consentPost]);
   };
 
   const classes = useStyles();
@@ -262,11 +269,13 @@ const Consent = ({ consents, footerInfo, errorText }) => {
                                 value="true"
                                 control={<GreenRadio />}
                                 label="Ja"
+                                disabled={isFetching}
                               />
                               <FormControlLabel
                                 value="false"
                                 control={<Radio />}
                                 label="Nei"
+                                disabled={isFetching}
                               />
                             </RadioGroup>
                           )}
