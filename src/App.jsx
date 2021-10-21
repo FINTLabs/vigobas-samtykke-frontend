@@ -98,7 +98,7 @@ function App() {
 
   React.useEffect(() => {
     getConsents();
-  }, [setConsents, getConsents]);
+  }, [getConsents]);
 
   return (
     <ThemeProvider theme={tema}>

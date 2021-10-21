@@ -3,5 +3,5 @@ export const dateformatter = (datetime) => {
     var date = new Date(datetime.toString());
     return date.toLocaleString("no-NO");
   }
-  return "Ingen gyldig dato";
+  return "";
 };
