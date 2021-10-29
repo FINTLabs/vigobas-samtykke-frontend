@@ -33,7 +33,6 @@ const Consent = ({ consents, footerInfo, errorText, setConsents }) => {
     )
       .then((response) => response.json())
       .then((consentPut) => {
-        console.log("fe", consentPut);
         setConsents((prevConsents) => {
           let tempArr = [...prevConsents];
           tempArr[index] = consentPut;
@@ -54,7 +53,6 @@ const Consent = ({ consents, footerInfo, errorText, setConsents }) => {
     })
       .then((response) => response.json())
       .then((consentPost) => {
-        console.log("fe", consentPost);
         setConsents((prevConsents) => [
           ...prevConsents,
           (prevConsents[index] = consentPost),

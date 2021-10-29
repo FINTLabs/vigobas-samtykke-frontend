@@ -78,10 +78,12 @@ const ConsentTable = ({
               <TableCell align="center">{consent.processorName}</TableCell>
               <TableCell align="center">{consent.personalDataName}</TableCell>
               <TableCell align="center">
-                {dateformatter(consent.expirationDate.start)}
+                {consent?.expirationDate?.start &&
+                  dateformatter(consent.expirationDate.start)}
               </TableCell>
               <TableCell align="center">
-                {dateformatter(consent.expirationDate.slutt)}
+                {consent?.expirationDate?.slutt &&
+                  dateformatter(consent.expirationDate.slutt)}
               </TableCell>
               <TableCell align="center">
                 {(consent.expirationDate === null ||
