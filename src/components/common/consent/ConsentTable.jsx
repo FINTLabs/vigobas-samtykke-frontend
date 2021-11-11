@@ -62,6 +62,9 @@ const ConsentTable = ({
               <strong>Personopplysning</strong>
             </TableCell>
             <TableCell align="center">
+              <strong>Formål</strong>
+            </TableCell>
+            <TableCell align="center">
               <strong>Dato start</strong>
             </TableCell>
             <TableCell align="center">
@@ -77,6 +80,7 @@ const ConsentTable = ({
             <TableRow key={consent.systemIdValue} className={classes.tableRow}>
               <TableCell align="center">{consent.processorName}</TableCell>
               <TableCell align="center">{consent.personalDataName}</TableCell>
+              <TableCell align="center">{consent.processing.formal}</TableCell>
               <TableCell align="center">
                 {consent?.expirationDate?.start &&
                   dateformatter(consent.expirationDate.start)}
