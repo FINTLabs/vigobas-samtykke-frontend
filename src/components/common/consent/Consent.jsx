@@ -33,7 +33,7 @@ const Consent = ({
   const handleChange = (event, index, consent) => {
     setIsFetching(true);
     fetch(
-      `api/${consent.systemIdValue}/${consent.processing.systemId.identifikatorverdi}/${event.target.value}`,
+      `api/${consent.systemIdValue}/${consent.processing.systemId.identifikatorverdi}/${event.target.checked}`,
       {
         method: "PUT",
         headers: {

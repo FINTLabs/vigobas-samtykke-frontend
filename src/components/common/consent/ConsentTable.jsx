@@ -77,6 +77,7 @@ const ConsentTable = ({
                   (consent.active === true || consent.active === false) && (
                     <Switch
                       checked={consent.active}
+                      color="primary"
                       onChange={(e) => handleChange(e, i, consent)}
                       disabled={isFetching}
                       name="switch"
