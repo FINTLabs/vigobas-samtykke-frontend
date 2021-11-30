@@ -43,13 +43,13 @@ const ConsentTable = ({
         </colgroup>
         <TableHead className={classes.tableHeader}>
           <TableRow className={classes.tableRow}>
-            <TableCell align="center">
+            <TableCell align="left">
               <strong>Tjeneste</strong>
             </TableCell>
-            <TableCell align="center">
+            <TableCell align="left">
               <strong>Personopplysning</strong>
             </TableCell>
-            <TableCell align="center">
+            <TableCell align="left">
               <strong>Formål</strong>
             </TableCell>
             <TableCell align="center">
@@ -60,9 +60,9 @@ const ConsentTable = ({
         <TableBody>
           {consents.map((consent, i) => (
             <TableRow key={consent.systemIdValue} className={classes.tableRow}>
-              <TableCell align="center">{consent.processorName}</TableCell>
-              <TableCell align="center">{consent.personalDataName}</TableCell>
-              <TableCell align="center">{consent.processing.formal}</TableCell>
+              <TableCell align="left">{consent.processorName}</TableCell>
+              <TableCell align="left">{consent.personalDataName}</TableCell>
+              <TableCell align="left">{consent.processing.formal}</TableCell>
               <TableCell align="center">
                 {(consent.expirationDate === null ||
                   consent.active === undefined) && (
