@@ -6,7 +6,7 @@
     font: $fweight-normal $fsize-std $font;
     // padding: 0 0 10vh 50px;
     float: left;
-    width: 80%;
+    width: 100%;
 
     @media #{$max-lg} {
         padding: 0 0 10vh 20px;
@@ -28,10 +28,6 @@
             padding-left: 0 !important;
             padding-right: 0 !important;
         }*/
-    }
-
-    .consent-table {
-        width: 95%;
     }
     
 }

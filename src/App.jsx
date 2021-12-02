@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
 
@@ -17,12 +17,13 @@ function App() {
     featureColor2: "#d0eaed",
   };
   const footerDefault = { countyName: "", phoneNumber: "", mail: "" };
-  const [tema, setTema] = React.useState(theme);
-  const [footerInfo, setFooterInfo] = React.useState(footerDefault);
-  const [consents, setConsents] = React.useState([]);
-  const [errorText, setErrorText] = React.useState("");
+  const [tema, setTema] = useState(theme);
+  const [footerInfo, setFooterInfo] = useState(footerDefault);
+  const [consents, setConsents] = useState([]);
+  const [errorText, setErrorText] = useState("");
+  const [isFetching, setIsFetching] = useState(false);
 
-  const getBranding = React.useCallback(() => {
+  const getBranding = useCallback(() => {
     setErrorText("");
     fetch(`api/branding`, {
       method: "GET",
@@ -63,8 +64,9 @@ function App() {
       });
   }, []);
 
-  const getConsents = React.useCallback(() => {
+  const getConsents = useCallback(() => {
     setErrorText("");
+    setIsFetching(true);
     fetch(`api/consents`, {
       method: "GET",
       headers: {
@@ -89,14 +91,17 @@ function App() {
       .catch((error) => {
         setErrorText(error.message);
         console.error("Error:", error);
+      })
+      .finally(() => {
+        setIsFetching(false);
       });
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     getBranding();
   }, [getBranding]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     getConsents();
   }, [getConsents]);
 
@@ -111,6 +116,8 @@ function App() {
               footerInfo={footerInfo}
               errorText={errorText}
               setConsents={setConsents}
+              isFetching={isFetching}
+              setIsFetching={setIsFetching}
             />
           </div>
         </div>

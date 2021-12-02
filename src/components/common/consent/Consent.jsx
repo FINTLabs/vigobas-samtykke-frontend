@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-
+import CircularProgress from "@material-ui/core/CircularProgress";
 import ConsentTable from "./ConsentTable";
 import "./Consent.scss";
 
@@ -15,15 +14,26 @@ const useStyles = makeStyles((theme) => ({
   headerColor2: {
     color: theme.secondaryColor,
   },
+  spinner: {
+    paddingTop: "24px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 }));
 
-const Consent = ({ consents, footerInfo, errorText, setConsents }) => {
-  const [isFetching, setIsFetching] = useState(false);
-
+const Consent = ({
+  consents,
+  footerInfo,
+  errorText,
+  setConsents,
+  isFetching,
+  setIsFetching,
+}) => {
   const handleChange = (event, index, consent) => {
     setIsFetching(true);
     fetch(
-      `api/${consent.systemIdValue}/${consent.processing.systemId.identifikatorverdi}/${event.target.value}`,
+      `api/${consent.systemIdValue}/${consent.processing.systemId.identifikatorverdi}/${event.target.checked}`,
       {
         method: "PUT",
         headers: {
@@ -53,10 +63,11 @@ const Consent = ({ consents, footerInfo, errorText, setConsents }) => {
     })
       .then((response) => response.json())
       .then((consentPost) => {
-        setConsents((prevConsents) => [
-          ...prevConsents,
-          (prevConsents[index] = consentPost),
-        ]);
+        setConsents((prevConsents) => {
+          let tempArr = [...prevConsents];
+          tempArr[index] = consentPost;
+          return [...tempArr];
+        });
         setIsFetching(false);
       })
       .catch(console.log);
@@ -78,13 +89,18 @@ const Consent = ({ consents, footerInfo, errorText, setConsents }) => {
         </section>
         <section className="row-3">
           <h2 className={classes.headerColor2}>Samtykker</h2>
-          <section className="consent-table">
+          <section>
             <ConsentTable
               consents={consents}
               handleChange={handleChange}
               isFetching={isFetching}
               createConsent={createConsent}
             />
+            {isFetching && (
+              <div className={classes.spinner}>
+                <CircularProgress />
+              </div>
+            )}
           </section>
         </section>
       </section>
