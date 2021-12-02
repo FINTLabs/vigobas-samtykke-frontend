@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import ConsentTable from "./ConsentTable";
+import ConsentTable from "../consentTable/ConsentTable";
 import "./Consent.scss";
 
 const useStyles = makeStyles((theme) => ({
