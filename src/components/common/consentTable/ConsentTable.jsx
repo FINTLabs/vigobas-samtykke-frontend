@@ -78,6 +78,7 @@ const ConsentTable = ({
           </TableHead>
           <TableBody>
             {isFetching &&
+              consents.length === 0 &&
               skeletonArray.map((item, index) => (
                 <TableRow key={index}>
                   <TableCell align="left">
