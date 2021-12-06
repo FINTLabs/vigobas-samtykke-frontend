@@ -8,14 +8,14 @@
      padding: 0;
      position: relative;
      width: 100%;
-     display: inline-block;
-     
+     display: inline-block;     
 }
+
 .row {
     margin-left: 6%;
     margin-right: 6%;
-
 }
+
 .header {
     &.row {
         height: 100%;
@@ -29,10 +29,6 @@
     display: inline-block;
     height: 100px;
     width: 50%;
-
-    @media #{max-sm} {
-        //TODO center logos        
-    }
     
     &.logo-county {
         background-image: url('../../../content/images/01-viken.png');
@@ -41,8 +37,11 @@
         float: left;
         width: 336px;
         height: 100px;
+        @media #{$max-sm} {
+            align-content: center;
+        }
     }
-
+    
      &.logo-portal {
         background-image: url('../../../content/images/portal-logo.png');
         background-position: 30px center;
@@ -51,6 +50,9 @@
         width: 328px;
         height: 100px;
         align-content: right;
+        @media #{$max-sm} {
+            display: none;
+        }
     }
 }
 
@@ -62,10 +64,3 @@
     background-color: $secondary-color;
     align-content: center;
   }
-
-  
-
-
-
-
-
