@@ -6,7 +6,7 @@ import "./Footer.scss";
 const useStyles = makeStyles((theme) => ({
   bottom_seperator: {
     backgroundColor: theme.secondaryColor,
-    width: "88%",
+    width: "100%",
     border: "none",
     height: "1.5px",
     margin: "0",
