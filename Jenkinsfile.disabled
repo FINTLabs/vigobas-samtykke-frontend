@@ -19,7 +19,6 @@ pipeline {
             }
             steps {
                 // Tagging the specific version
-                // sh "docker tag ${GIT_COMMIT} ${MAIN_ACR}/${IMAGE_NAME}:build.${BUILD_NUMBER}"
                 sh "docker tag ${GIT_COMMIT} ${MAIN_ACR}/${IMAGE_NAME}:build.${BUILD_NUMBER}_${GIT_COMMIT}"
                 //withDockerRegistry([credentialsId: "${MAIN_ACR}", url: "https://${MAIN_ACR}"]) {
                 withDockerRegistry([credentialsId: 'fintlabsacr.azurecr.io', url: 'https://fintlabsacr.azurecr.io']) {
@@ -27,6 +26,14 @@ pipeline {
                   sh "docker tag ${GIT_COMMIT} ${MAIN_ACR}/${IMAGE_NAME}:latest"
                   sh "docker push ${MAIN_ACR}/${IMAGE_NAME}:latest"
                 }
+            }
+        }
+        stage('Build backend') {
+            when {
+                branch 'main'
+            }
+            steps {
+                build "FINTLabs/vigobas-samtykke-backend/main"
             }
         }
         stage('Publish PR') {

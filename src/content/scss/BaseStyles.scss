@@ -17,16 +17,16 @@ body {
     margin: 0;
     padding: 0 $padding;
 
-    @media #{$max-lg} {
-        padding: 0 20px;
-    }
+    // @media #{$max-lg} {
+    //     padding: 0 20px;
+    // }
 }
 
-@media screen and (max-width: 1024px) {
-    body {
-        padding: 0 2%;
-    }
-}
+// @media screen and (max-width: 1024px) {
+//     body {
+//         padding: 0 2%;
+//     }
+// }
 
 article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
     display: block;

@@ -12,16 +12,15 @@
 
   .footer {
     //border-top: $border-medium $secondary-color;
-    // position: fixed;
-    // left: 0;
-    // bottom: 10;
-    // width: 100%;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     clear: both;
     font: $fweight-normal $fsize-sm $font;
-    margin: 50px auto 0;
-    padding: 0 0 50px;
+    padding: 0 0% 50px;
     text-align: left;
     transform: translateY(5vh);
+    background-color: white;
 
     strong {
         font-weight: $fweight-bold;
@@ -30,13 +29,4 @@
     .footer-info {
         padding: 15px 0 0;
     }
-/*
-    .vigo {
-        text-align: right;
-
-        img {
-            width: 200px;
-        }
-    }
-*/
 }

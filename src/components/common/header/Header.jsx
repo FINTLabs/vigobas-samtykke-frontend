@@ -2,14 +2,14 @@ import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import "./Header.scss";
-import deafaultImage from "../../../content/images/company-logo.png";
 import image1 from "../../../content/images/01-viken.png";
 
 const useStyles = makeStyles((theme) => ({
   logoCounty: {
-    backgroundImage: theme.isLogoFromUrl
-      ? `url(${theme.logo})`
-      : `url('${theme.logo === "01-viken.png" ? image1 : deafaultImage}')`,
+    backgroundImage:
+      theme.logo.substring(0, 4) === "http"
+        ? `url(${theme.logo})`
+        : `url('${theme.logo === "01-viken.png" ? image1 : ""}')`,
     backgroundSize: "contain",
     backgroundPosition: "30px left",
     backgroundRepeat: "no-repeat",

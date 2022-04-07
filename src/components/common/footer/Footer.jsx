@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
-//import { appSettings } from "../../../Config";
 import "./Footer.scss";
 
 const useStyles = makeStyles((theme) => ({
@@ -38,10 +37,7 @@ const Footer = ({ footerInfo }) => {
             </strong>
           </p>
           <p>
-            <a
-              href="mailto:@appSettings.RequestSenderEmail"
-              className={classes.aHover}
-            >
+            <a href={`mailto:${footerInfo.mail}`} className={classes.aHover}>
               {footerInfo.mail}
             </a>{" "}
             | tlf. {footerInfo.phoneNumber}
