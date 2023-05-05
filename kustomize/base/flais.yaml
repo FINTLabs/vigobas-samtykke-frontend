@@ -1,0 +1,24 @@
+apiVersion: fintlabs.no/v1alpha1
+kind: Application
+metadata:
+  name: vigobas-samtykke-frontend-rogfk
+  namespace: rogfk-no
+  labels:
+    app.kubernetes.io/name: vigobas-samtykke-frontend-rogfk
+    app.kubernetes.io/instance: vigobas-samtykke-frontend-rogfk_rogfk_no
+    app.kubernetes.io/version: latest
+    app.kubernetes.io/component: samtykke-frontend
+    app.kubernetes.io/part-of: vigobas
+    fintlabs.no/team: bas
+    fintlabs.no/org-id: rogfk.no
+spec:
+  auth:
+    application:
+      enabled: true
+  ingress:
+    enabled: true
+    basePath: 'beta-samtykke.vigoiks.no'
+    middleware: vigobas-samtykke-frontend-rogfk-sso
+  orgId: rogfk.no
+  image: fintlabsacr.azurecr.io/vigobas-samtykke-frontend:latest
+  imagePullPolicy: Always
