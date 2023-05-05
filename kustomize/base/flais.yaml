@@ -12,14 +12,6 @@ metadata:
     fintlabs.no/team: bas
     fintlabs.no/org-id: rogfk.no
 spec:
-  auth:
-    application:
-      enabled: true
-  ingress:
-    enabled: true
-    basePath: 'beta-samtykke.vigoiks.no'
-    middleware:
-      - vigobas-samtykke-frontend-rogfk-sso
   orgId: rogfk.no
   image: fintlabsacr.azurecr.io/vigobas-samtykke-frontend:latest
   imagePullPolicy: Always

@@ -3,3 +3,5 @@ kind: Kustomization
 resources:
   - config-map.yaml
   - flais.yaml
+  - auth-forward.yaml
+  - ingress-route.yaml

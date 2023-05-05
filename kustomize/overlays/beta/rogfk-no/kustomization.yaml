@@ -3,6 +3,8 @@ kind: Kustomization
 namespace: rogfk-no
 resources:
   - ../../../base
+patchesStrategicMerge:
+  - ingress-route.yaml
 commonLabels:
   app.kubernetes.io/name: vigobas-samtykke-frontend-rogfk
   app.kubernetes.io/instance: vigobas-samtykke-frontend-rogfk_rogfk_no

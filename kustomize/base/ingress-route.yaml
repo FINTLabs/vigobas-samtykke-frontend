@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: vigobas-samtykke-frontend-rogfk
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`path`) && PathPrefix( `/`)
+      kind: Rule
+      middlewares:
+        - name: vigobas-samtykke-frontend-rogfk-sso
+      services:
+        - name: vigobas-samtykke-frontend-rogfk
+          port: 8080
