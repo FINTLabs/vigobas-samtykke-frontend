@@ -18,7 +18,8 @@ spec:
   ingress:
     enabled: true
     basePath: 'beta-samtykke.vigoiks.no'
-    middleware: vigobas-samtykke-frontend-rogfk-sso
+    middleware:
+      - vigobas-samtykke-frontend-rogfk-sso
   orgId: rogfk.no
   image: fintlabsacr.azurecr.io/vigobas-samtykke-frontend:latest
   imagePullPolicy: Always
