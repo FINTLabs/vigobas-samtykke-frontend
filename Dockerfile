@@ -21,7 +21,7 @@ RUN npm run build
 
 ## Second stage: runtime
 FROM nginx:latest
-ARG port=8000
+#ARG port=8000
 
 ## get the built application from the first stage to htdocs
 COPY --from=build /app/build /usr/share/nginx/html

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="KubernetesSettings">
+    <specSources>
+      <SpecSource>
+        <option name="pathOrUrl" value="https://raw.githubusercontent.com/FINTLabs/flaiserator/main/kustomize/base/applications.fintlabs.no-v1.yml" />
+      </SpecSource>
+    </specSources>
+  </component>
+</project>
