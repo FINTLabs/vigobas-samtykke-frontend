@@ -12,4 +12,4 @@ metadata:
     fintlabs.no/org-id: rogfk.no
 spec:
   hostname: beta-samtykke.vigoiks.no
-  basePath: /rogfk.no
+  basePath: /rogfk-no
