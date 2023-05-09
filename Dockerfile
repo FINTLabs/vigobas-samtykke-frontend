@@ -1,5 +1,5 @@
 ## base image
-FROM node:14-alpine AS build
+FROM node:18-alpine AS build
 ## default http port set to 8000
 
 ## set working directory
@@ -21,7 +21,7 @@ RUN npm run build
 
 ## Second stage: runtime
 FROM nginx:latest
-#ARG port=8000
+ARG port=8000
 
 ## get the built application from the first stage to htdocs
 COPY --from=build /app/build /usr/share/nginx/html
