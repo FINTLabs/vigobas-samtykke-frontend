@@ -1,5 +1,5 @@
 ## base image
-FROM node:18-alpine AS build
+FROM node:16-alpine AS build
 ## default http port set to 8000
 
 ## set working directory
