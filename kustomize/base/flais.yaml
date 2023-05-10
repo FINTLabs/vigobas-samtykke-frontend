@@ -15,7 +15,7 @@ spec:
   orgId: rogfk.no
   image: fintlabsacr.azurecr.io/vigobas-samtykke-frontend:latest
   imagePullPolicy: Always
-  port: 80
+  port: 8000
   url:
     hostname: beta-samtykke.vigoiks.no
     basePath: /rogfk-no
