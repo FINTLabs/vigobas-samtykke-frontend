@@ -17,8 +17,8 @@ spec:
   imagePullPolicy: Always
   port: 8000
   url:
-    hostname: beta-samtykke.vigoiks.no
-    basePath: /rogfk-no
+    hostname: samtykke.vigoiks.no
+    basePath: beta/rogfk-no
   ingress:
     enabled: true
     middlewares:
