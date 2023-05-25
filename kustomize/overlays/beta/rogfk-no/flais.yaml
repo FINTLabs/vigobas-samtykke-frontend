@@ -17,7 +17,7 @@ spec:
   imagePullPolicy: Always
   url:
     hostname: samtykke.vigoiks.no
-    basePath: beta/rogfk-no
+    basePath: /beta/rogfk-no
   ingress:
     enabled: true
     middlewares:
