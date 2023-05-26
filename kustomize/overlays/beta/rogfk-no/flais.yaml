@@ -20,5 +20,6 @@ spec:
     basePath: /beta/rogfk-no
   ingress:
     enabled: true
+    basePath: /beta/rogfk-no
     middlewares:
       - vigobas-samtykke-frontend-sso
