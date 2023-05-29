@@ -2,6 +2,10 @@ apiVersion: fintlabs.no/v1alpha1
 kind: FLAISSso
 metadata:
   name: vigobas-samtykke-frontend-sso
+  labels:
+    app.kubernetes.io/component: sso
+    app.kubernetes.io/name: vigobas-samtykke-sso
+    app.kubernetes.io/instance: vigobas-samtykke-sso_rogfk-no
 spec:
   hostname: samtykke.vigoiks.no
   basePath: /beta/rogfk-no

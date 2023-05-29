@@ -1,9 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 commonLabels:
-  app.kubernetes.io/name: vigobas-samtykke-frontend
   app.kubernetes.io/version: latest
-  app.kubernetes.io/component: samtykke-frontend
   app.kubernetes.io/part-of: vigobas
   fintlabs.no/team: bas
 resources:
