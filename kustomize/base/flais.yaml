@@ -9,7 +9,8 @@ metadata:
 
 spec:
   orgId: rogfk.no
-  image: fintlabsacr.azurecr.io/vigobas-samtykke-frontend:latest
+  #image: fintlabsacr.azurecr.io/vigobas-samtykke-frontend:latest
+  image: fintlabsacr.azurecr.io/vigobas-samtykke-frontend:1a49c5458e7fb2544cfab94b5d82462d76777300
   imagePullPolicy: Always
   url:
     hostname: samtykke.vigoiks.no
