@@ -97,6 +97,7 @@ function App() {
       });
   }, []);
 
+  
   useEffect(() => {
     getBranding();
   }, [getBranding]);
@@ -105,21 +106,7 @@ function App() {
     getConsents();
   }, [getConsents]);
 
-  const [basePath, setBasePath] = useState<string>();
-
-    useEffect(() => {
-        axios.get<any>('api/application/configuration')
-            .then(value => {
-                axios.defaults.baseURL = value.data.basePath;
-                setBasePath(value.data.basePath);
-            })
-            .catch(reason => {
-                console.log(reason);
-                setBasePath('/');
-            })
-    }, [basePath]);
-
-  return basePath ?
+  return 
   (
     <ThemeProvider theme={tema}>
       <div className="App">
@@ -139,7 +126,7 @@ function App() {
         <Footer footerInfo={footerInfo} />
       </div>
     </ThemeProvider>
-  ): <h1> Loading </h1>
+  );
 }
 
 export default App;
