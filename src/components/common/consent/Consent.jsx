@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import ConsentTable from "../consentTable/ConsentTable";
-import "./Consent.scss";
+//import "./Consent.scss";
 
 const useStyles = makeStyles((theme) => ({
   errorHandler: {
@@ -23,8 +23,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Consent = ({
   consents,
-  footerInfo,
-  errorText,
   setConsents,
   isFetching,
   setIsFetching,
@@ -77,13 +75,9 @@ const Consent = ({
     <section className="consent">
       <section className="row">
         <section className="row-1">
-          {errorText !== "" && (
-            <p className={classes.errorHandler}>{errorText}</p>
-          )}
           <h1 className={classes.headerColor}>Velkommen!</h1>
           <p>
-            Denne siden gir deg oversikt over dine samtykker hos{" "}
-            {footerInfo.countyName}.{" "}
+            Denne siden gir deg oversikt over dine samtykker
           </p>
         </section>
         <section className="row-3">
