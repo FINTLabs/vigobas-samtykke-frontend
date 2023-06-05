@@ -1,30 +1,18 @@
-## base image
-FROM node:16-alpine AS build
-## default http port set to 8000
+FROM node:16.14.0-alpine AS builder
+WORKDIR /src
+COPY package.json .
+COPY yarn.lock .
+RUN yarn install
+COPY . /src
+RUN yarn test:ci && yarn build
 
-## set working directory
-WORKDIR /app
 
-## add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
-
-## install and cache app dependencies
-## create user "node" and give permissions
-COPY package*.json ./
-RUN npm install
-
-## add app
-COPY . ./
-
-## build the project
-RUN npm run build
-
-## Second stage: runtime
-FROM nginx:latest
-ARG port=8000
-
-## get the built application from the first stage to htdocs
-COPY --from=build /app/build /usr/share/nginx/html
-
-## Set default http port
-RUN sed -i -r "s/(listen\s*)(80)/\1${port}/" /etc/nginx/conf.d/default.conf
+FROM node:16
+WORKDIR /usr/src/app
+RUN mkdir -p server
+COPY server/package*.json server
+COPY server/yarn.lock*.json server
+COPY --from=builder /src/build/ build
+RUN yarn --cwd server install
+COPY server server
+CMD [ "node", "server/index.js" ]
