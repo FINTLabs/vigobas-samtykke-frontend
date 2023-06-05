@@ -19,3 +19,6 @@ spec:
     enabled: true
     middlewares:
       - vigobas-samtykke-frontend-sso
+  env:
+    - name: BASE_PATH
+      value: path
