@@ -97,6 +97,11 @@ jobs:
         with:
           action: deploy
           manifests: ${{ steps.bake.outputs.manifestsBundle }}
-          #images: ghcr.io/fintlabs/vigobas-samtykke-frontend:latest
-          images: ${{ needs.build-and-push.outputs.tags }}
+          images: ghcr.io/fintlabs/vigobas-samtykke-frontend:shaf-7e7c5fd
+          #images: ${{ needs.build-and-push.outputs.tags }}
           namespace: ${{ matrix.org }}
+
+
+
+          #ghcr.io/fintlabs/vigobas-samtykke-frontend:shaF-7e7c5fd
+          #ghcr.io/fintlabs/vigobas-samtykke-frontend:shaf-7e7c5fd
