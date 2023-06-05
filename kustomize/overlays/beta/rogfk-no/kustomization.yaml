@@ -12,6 +12,9 @@ patches:
       - op: replace
         path: "/spec/url/basePath"
         value: "/beta/rogfk-no"
+      - op: replace
+        path: "/spec/env/0/value"
+        value: "/beta/rogfk-no"
     target:
       kind: Application
       name: vigobas-samtykke-frontend
@@ -19,6 +22,7 @@ patches:
       - op: replace
         path: "/spec/ingress/basePath"
         value: "/beta/rogfk-no"
+
     target:
       kind: Application
       name: vigobas-samtykke-frontend
